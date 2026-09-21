@@ -1,0 +1,19 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: boxing_platform
+      MYSQL_USER: boxing
+      MYSQL_PASSWORD: boxing_dev
+      MYSQL_ROOT_PASSWORD: local_root_dev
+    ports:
+      - "3306:3306"
+    volumes:
+      - boxing_mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -plocal_root_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+volumes:
+  boxing_mysql:
