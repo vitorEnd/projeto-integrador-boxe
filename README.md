@@ -27,10 +27,4 @@ npm run dev
 
 Se já existir um `.env`, confira se `DATABASE_URL` aponta para o MySQL usado. Não use os dois métodos de banco ao mesmo tempo na porta 3306.
 
-## Conferir os registros
 
-Em outro terminal, rode `npm run db:studio` e abra o endereço exibido. É possível ver `User`, `Profile`, `Exercise`, `Workout`, `WorkoutExercise`, `WorkoutLog` e `WeightLog`. Em `User`, a senha é guardada como hash (`passwordHash`).
-
-Para demonstrar: cadastre uma conta, entre, preencha o perfil com objetivo emagrecimento, gere o treino, registre a realização e abra a página de evolução. Nela, registre também uma nova pesagem. O passo a passo está em [ROTEIRO_VIDEO.md](ROTEIRO_VIDEO.md).
-
-Se o cadastro ou login mostrar que o banco não está pronto, interrompa o site com `Ctrl+C`, rode `npm run demo` novamente e atualize a página. Para repetir a verificação automática dos quatro casos de uso com o site aberto, rode `npm run smoke:test`; as contas criadas por esse teste são removidas ao final.
