@@ -1,5 +1,7 @@
 # Atualização do projeto — versão 2
 
+> A demonstração pública pronta para apresentação está documentada em [GITHUB_PAGES.md](GITHUB_PAGES.md).
+
 Esta atualização melhora a experiência de uso sem alterar os quatro casos de uso principais. O cadastro, a geração do treino, o registro da realização e a evolução continuam usando o banco MySQL. As mudanças foram feitas a partir de dificuldades percebidas na primeira versão: pouca orientação entre as etapas, ausência de apoio durante a execução do treino e indicadores apresentados apenas como números.
 
 ## O que foi atualizado

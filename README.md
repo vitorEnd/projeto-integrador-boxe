@@ -6,6 +6,16 @@ Sistema web para cadastrar alunos, sugerir treinos e acompanhar os treinos reali
 
 A versão atual inclui painel com meta semanal, minutos treinados e últimas atividades; modo treino guiado com checklist e cronômetro; gráficos de minutos e peso; histórico dos treinos gerados; navegação responsiva e formulários mais claros. O comparativo e o roteiro para demonstrar essas mudanças estão em [ATUALIZACAO.md](ATUALIZACAO.md).
 
+## Abrir a demonstração no GitHub Pages
+
+A versão demonstrativa pode ser acessada em:
+
+**https://vitorend.github.io/projeto-integrador-boxe/**
+
+Clique em **Acessar conta de demonstração** para entrar com perfil, treinos, registros e pesagens já preparados. Essa versão salva os dados no navegador porque o GitHub Pages não executa Next.js, APIs ou MySQL. A versão completa com banco real continua disponível para execução local com `npm run demo`.
+
+As instruções para apresentação e manutenção estão em [GITHUB_PAGES.md](GITHUB_PAGES.md).
+
 ## Rodar no Windows (sem Docker)
 
 Com Node.js instalado, abra o PowerShell nesta pasta:
