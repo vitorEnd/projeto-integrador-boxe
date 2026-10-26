@@ -1,12 +1,18 @@
 import "./globals.css";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { getCurrentUser } from "@/lib/auth";
-import LogoutButton from "@/components/logout-button";
+import AppNav from "@/components/app-nav";
 
-export const metadata: Metadata = { title: "Boxing | Treinamentos", description: "Plataforma de apoio ao treinamento de boxe" };
+export const metadata: Metadata = {
+  title: { default: "Boxing | Treinamentos", template: "%s | Boxing" },
+  description: "Plataforma de apoio ao treinamento e à evolução no boxe",
+};
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const user = await getCurrentUser();
-  return <html lang="pt-BR"><body><header className="border-b border-neutral-800"><nav className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-4"><Link href={user ? "/dashboard" : "/login"} className="text-xl font-black tracking-wide"><span className="text-boxing">BOX</span>ING</Link><div className="flex items-center gap-4 text-sm">{user ? <><Link href="/dashboard">Início</Link><Link href="/treinos/gerar">Treinos</Link><Link href="/evolucao">Evolução</Link><Link href="/perfil">Perfil</Link><LogoutButton /></> : <><Link href="/login">Entrar</Link><Link href="/cadastro">Cadastrar</Link></>}</div></nav></header><main className="mx-auto max-w-5xl px-4 py-8">{children}</main></body></html>;
+  return <html lang="pt-BR"><body>
+    <AppNav user={user ? { name: user.name } : null} />
+    <main className="mx-auto min-h-[calc(100vh-5rem)] max-w-6xl px-4 py-8 sm:px-6 sm:py-10">{children}</main>
+    <footer className="border-t border-white/5 px-4 py-6 text-center text-xs text-neutral-600">Boxing · apoio ao treinamento com acompanhamento individual</footer>
+  </body></html>;
 }

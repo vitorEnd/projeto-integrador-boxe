@@ -4,6 +4,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { estimateCalories } from "@/services/calorie-estimate";
 import WeightForm from "@/components/weight-form";
+import EvolutionCharts from "@/components/evolution-charts";
 
 const formatWeight = (value: number) => `${new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(value)} kg`;
 
@@ -52,6 +53,15 @@ export default async function Evolucao() {
   const firstWeight = weights[0];
   const lastWeight = weights.at(-1);
   const change = firstWeight && lastWeight ? lastWeight.weightKg - firstWeight.weightKg : 0;
+  const dayKey = new Intl.DateTimeFormat("sv-SE", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" });
+  const dayLabel = new Intl.DateTimeFormat("pt-BR", { timeZone: "America/Sao_Paulo", weekday: "short" });
+  const trainingDays = Array.from({ length: 7 }, (_, index) => {
+    const date = new Date();
+    date.setDate(date.getDate() - (6 - index));
+    const key = dayKey.format(date);
+    return { label: dayLabel.format(date).replace(".", ""), minutes: logs.filter((log) => dayKey.format(log.performedAt) === key).reduce((sum, log) => sum + log.durationMinutes, 0) };
+  });
+  const weightPoints = weights.slice(-8).map((entry) => ({ label: entry.recordedOn.toLocaleDateString("pt-BR", { timeZone: "UTC", day: "2-digit", month: "2-digit" }), value: entry.weightKg }));
 
   return <div className="space-y-8">
     <header>
@@ -66,6 +76,8 @@ export default async function Evolucao() {
         <p className="mt-2 text-2xl font-bold">{metric.value}</p>
       </div>)}
     </section>
+
+    <EvolutionCharts trainingDays={trainingDays} weightPoints={weightPoints} />
 
     <details className="text-sm text-neutral-400">
       <summary className="cursor-pointer text-neutral-300">Como são estimadas as calorias?</summary>

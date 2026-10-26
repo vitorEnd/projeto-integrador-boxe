@@ -14,5 +14,5 @@ export default function GenerateButton() {
     } catch { setError("Falha de conexão. Tente novamente."); }
     finally { setLoading(false); }
   }
-  return <div className="space-y-3"><button onClick={generate} disabled={loading} className="btn">{loading ? "Gerando..." : "Gerar treinamento"}</button>{error && <p role="alert" className="text-red-400">{error}</p>}{success && <p role="status" className="text-green-400">{success}</p>}</div>;
+  return <div className="space-y-3"><button onClick={generate} disabled={loading} className="btn w-full sm:w-auto">{loading ? "Montando seu treino..." : "Gerar novo treinamento"}<span aria-hidden="true">→</span></button>{error && <p role="alert" className="status-error">{error}</p>}{success && <p role="status" className="status-success">{success}</p>}</div>;
 }

@@ -2,6 +2,10 @@
 
 Sistema web para cadastrar alunos, sugerir treinos e acompanhar os treinos realizados. Os dados ficam em MySQL. Foram implementados os casos de uso UC01, UC03, UC04 e UC05.
 
+## Atualização da interface e das funções
+
+A versão atual inclui painel com meta semanal, minutos treinados e últimas atividades; modo treino guiado com checklist e cronômetro; gráficos de minutos e peso; histórico dos treinos gerados; navegação responsiva e formulários mais claros. O comparativo e o roteiro para demonstrar essas mudanças estão em [ATUALIZACAO.md](ATUALIZACAO.md).
+
 ## Rodar no Windows (sem Docker)
 
 Com Node.js instalado, abra o PowerShell nesta pasta:

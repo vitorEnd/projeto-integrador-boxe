@@ -32,7 +32,7 @@ export default function WeightForm() {
     <label className="field">Data da pesagem<input name="recordedOn" type="date" max={today} defaultValue={today} required /></label>
     <label className="field">Peso (kg)<input name="weightKg" type="number" step="0.1" min="0.1" max="1000" placeholder="Ex.: 74,5" required /></label>
     <button className="btn h-[42px]" disabled={loading}>{loading ? "Salvando..." : "Registrar peso"}</button>
-    {error && <p role="alert" className="text-sm text-red-400 sm:col-span-3">{error}</p>}
-    {success && <p role="status" className="text-sm text-green-400 sm:col-span-3">{success}</p>}
+    {error && <p role="alert" className="status-error sm:col-span-3">{error}</p>}
+    {success && <p role="status" className="status-success sm:col-span-3">{success}</p>}
   </form>;
 }
